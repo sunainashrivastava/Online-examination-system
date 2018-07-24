@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="panel alert-info">
+	<center><h1>Answers of the following quiz are :</h1></center>
+		<table align="center">
+		  <thead>
+		    <tr>
+		      <th>S/No</th>
+					<th>Question</th>
+					<th>Answer</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+				<% @solutions.each do |solution|%>
+					<tr>
+					  <td><%= solution.sno %></td>
+					  <td><%= solution.question %></td>
+				    <td><%= solution.ans %></td>
+					</tr>
+			  <% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

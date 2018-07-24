@@ -1,0 +1,2 @@
+module TakeTests::PicturesHelper
+end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  question_id: 1
+  result: false
+  user: one
+  take_test: one
+
+two:
+  question_id: 1
+  result: false
+  user: two
+  take_test: two

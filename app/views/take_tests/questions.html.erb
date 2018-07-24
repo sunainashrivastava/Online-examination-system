@@ -1,0 +1,33 @@
+<div class="panel">
+  <table>
+    <thead>
+      <tr>
+        <th>S/No</th>
+        <th>Question</th>
+        <th>A</th>
+        <th>B</th>
+        <th>C</th>
+        <th>D</th>
+        <th>Answer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @questions.each do |test| %>
+        <tr>
+          <td><%= test.sno %></td>
+          <td><%= test.question %></td>
+          <td><%= test.op1 %></td>
+          <td><%= test.op2 %></td>
+          <td><%= test.op3 %></td>
+          <td><%= test.op4 %></td>
+          <td><%= test.ans %></td>
+          <td><%= link_to 'Destroy', take_test_path(test),
+                method: :delete, :class => "text-danger", 
+                data: { confirm: 'Are you sure?' }%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <td><%= link_to 'Create', new_take_test_path, :class => "text-danger"%></td>
+  <td><%= link_to 'back',root_path, :class => "text-danger"%></td>
+</div>

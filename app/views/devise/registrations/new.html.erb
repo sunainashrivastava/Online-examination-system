@@ -1,0 +1,30 @@
+<div class ="panel form">
+<center><h2>SIGN UP</h2></center>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <h5>EMAIL</h5>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <h5>USERNAME</h5>
+    <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
+    <h5>FIRST NAME</h5>
+    <%= f.text_field :firstname, autofocus: true, autocomplete: "first name" %>
+    <h5>LAST NAME</h5>
+    <%= f.text_field :lastname, autofocus: true, autocomplete: "last name" %>
+    <h5>PASSWORD</h5>
+    <% if @minimum_password_length %>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "off" %>
+    <h5>CONFIRM PASSWORD</h5>
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <h5>IMAGE</h5>
+    <center><%= f.file_field :avatar %></center>
+    <div class="actions">
+    <%= f.submit "Sign-up", :class => "btn btn-info pull-right"%>
+  </div>
+<% end %>
+</div>
+<%= render "devise/shared/links" %>
+</div>

@@ -1,0 +1,50 @@
+<div class="panel">
+  <h3>Question</h3>
+  <p>
+    <strong>S/No:</strong>
+    <%= @take_test.sno %>
+  </p>
+
+   <p>
+    <strong>Question:</strong>
+    <%= @take_test.question %>
+  </p>
+
+  <p>
+    <strong>A:</strong>
+    <%= @take_test.op1 %>
+  </p>
+
+  <p>
+    <strong>B:</strong>
+    <%= @take_test.op2 %>
+  </p>
+
+  <p>
+    <strong>C:</strong>
+    <%= @take_test.op3 %>
+  </p>
+
+  <p>
+    <strong>D:</strong>
+    <%= @take_test.op4 %>
+  </p>
+
+  <p>
+    <strong>Answer:</strong>
+    <%= @take_test.ans %>
+  </p>
+
+  <p>
+    <strong>Image:</strong>
+    <% @take_test.pictures.each do |picture| %>
+      <% if picture.avatar? %> 
+        <%= image_tag picture.avatar.url %>
+      <% else %>
+        <%= "dont have any picture" %>
+      <% end %>
+    <%end%>
+  </p>
+
+  <%= link_to 'back', questions_path%>
+</div>

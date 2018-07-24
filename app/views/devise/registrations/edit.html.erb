@@ -1,0 +1,48 @@
+<div class ="panel form">
+  <div class="field">
+    <h2>Edit Profile</h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= devise_error_messages! %>
+
+    <h5>EMAIL</h5>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+
+    <h5>FIRST NAME</h5>
+    <%= f.text_field :firstname, autofocus: true, autocomplete: "firstname" %>
+
+    <h5>LAST NAME</h5>
+    <%= f.text_field :lastname, autofocus: true, autocomplete: "lastname" %>
+
+    <h5>USER NAME</h5>
+    <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <h5>PASSWORD</h5>
+    <%= f.password_field :password, autocomplete: "off" %>
+    <% if @minimum_password_length %>
+    <br />
+    <% end %>
+    <h5>PASSWORD CONFIRMATION</h5>
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    
+    <h5>CURRENT PASSWORD</h5>
+    <%= f.password_field :current_password, autocomplete: "off" %>
+    
+    <h5>IMAGE</h5>
+    <center><%= f.file_field :avatar %></center>
+    
+    <div class="actions"><br />
+      <%= f.submit "Update", :class=>"btn btn-info pull-center" %>
+    </div>
+    <% end %>
+
+    <h3>Delete my account</h3>
+
+    <p>Unhappy? <%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :class=>"btn btn-info pull-center" %></p>
+
+    <%= link_to "Back", :back %>
+  </div>
+</div>

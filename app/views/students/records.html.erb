@@ -1,0 +1,21 @@
+<div class="container">
+	<div class="panel alert-info">
+	<center><h1>Your records of the following quizzes are :</h1></center>
+		<table align="center" class ="record_table">
+		  <thead>
+		    <tr>
+					<th><center>Scores</center></th>
+		      <th><center>Date of test</center></th>
+		    </tr>
+		  </thead>
+		  <tbody>
+				<% @records.each do |records|%>
+					<tr>
+				    <td><%= "#{records.scores}/10" %></td>
+				    <td><%= records.created_at.asctime %></td>
+					</tr>
+			  <% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

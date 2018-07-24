@@ -1,0 +1,56 @@
+<div class ="panel">
+  <%= form_for @take_test, remote: true do |form| %>
+    <p>
+      <%= form.label :type %><br />
+      <%= form.select :type, ['Aptitude', 'Reasoning','Verbal'] %>
+    </p>
+
+    <p>
+      <%= form.label :sno %><br />
+      <%= form.text_field :sno %>
+    </p>
+    <p>
+      <%= form.label :question %><br />
+      <%= form.text_area :question %>
+    </p>
+   
+    <p>
+      <%= form.label :option1 %><br />
+      <%= form.text_field :op1 %>
+    </p>
+    <p>
+      <%= form.label :option2 %><br />
+      <%= form.text_field :op2 %>
+    </p>
+   
+    <p>
+      <%= form.label :option3 %><br />
+      <%= form.text_field :op3 %>
+    </p>
+   
+    <p>
+      <%= form.label :option4 %><br />
+      <%= form.text_field :op4 %>
+    </p>
+
+    <p>
+      <%= form.label :answer %><br>
+      <%= form.text_field :ans %>
+    </p>
+
+    <p>
+      <%= form.fields_for :pictures do |picture| %>
+      <%debugger%>
+        <%= picture.label :image %>
+        <%= picture.file_field :avatar %>
+      <% end %>
+    </p>
+
+    <p>
+      <%= form.submit  :class => "btn btn-info"%>
+    </p>
+
+  <% end %>
+
+  <%= link_to 'back',questions_path%>
+</div>

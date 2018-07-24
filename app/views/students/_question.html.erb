@@ -1,0 +1,37 @@
+<div class="container-fluid">
+	<h1 class = "text-info">
+		<center><b>QUIZ FOR <%= @questions.type.upcase%></b></center></h1>
+	<div class = "panel alert-info">
+		<%= form_tag({controller: "students", action: "change_question"}, remote: true) do%>
+		<p>
+		  <strong>S/No:</strong>
+		  <%= @questions.sno %>
+		</p>
+		 <p>
+		  <strong>Question:</strong>
+		  <%= @questions.question %>
+		</p>
+		<div class = "user_response">
+		<p>
+		  <%= radio_button_tag(:option, @questions[:op1]) %>
+	    <%= label_tag("#{@questions[:op1]}") %>
+		</p>
+		<p>
+		  <%= radio_button_tag(:option, @questions[:op2]) %>
+	    <%= label_tag("#{@questions[:op2]}") %>
+		</p>
+		<p>
+		  <%= radio_button_tag(:option, @questions[:op3]) %>
+	    <%= label_tag("#{@questions[:op3]}") %>
+		</p>
+		<p>
+		  <%= radio_button_tag(:option, @questions[:op4]) %>
+	    <%= label_tag("#{@questions[:op4]}") %>
+		</p>
+		<%= hidden_field_tag(:user_answer, "nil") %>
+		<%= hidden_field_tag(:id, "#{@questions[:id]}") %>
+		<%= submit_tag 'Save n Change', :class => "btn btn-info" %>
+		<% end%>
+		</div>
+	</div>
+</div>
