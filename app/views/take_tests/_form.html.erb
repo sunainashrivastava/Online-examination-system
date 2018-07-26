@@ -40,7 +40,6 @@
 
     <p>
       <%= form.fields_for :pictures do |picture| %>
-      <%debugger%>
         <%= picture.label :image %>
         <%= picture.file_field :avatar %>
       <% end %>

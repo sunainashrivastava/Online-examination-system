@@ -1,18 +1,20 @@
 <div class="container">
-	<div class="panel alert-info">
+	<div class="panel">
 	<center><h1>Your records of the following quizzes are :</h1></center>
 		<table align="center" class ="record_table">
 		  <thead>
 		    <tr>
 					<th><center>Scores</center></th>
 		      <th><center>Date of test</center></th>
+		      <th><center>Time of test</center></th>
 		    </tr>
 		  </thead>
 		  <tbody>
 				<% @records.each do |records|%>
 					<tr>
 				    <td><%= "#{records.scores}/10" %></td>
-				    <td><%= records.created_at.asctime %></td>
+				    <td><%= records.attempt_time.strftime("%D %M %Y")%></td>
+				    <td><%= records.attempt_time.strftime("%H:%M:%S")%></td>
 					</tr>
 			  <% end %>
 			</tbody>

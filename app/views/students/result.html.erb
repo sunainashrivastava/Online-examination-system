@@ -1,8 +1,9 @@
-<center><h1><b>QUIZ TIME OVER</b></h1></center>
 <div class = "panel">
+  <center><h1><b>QUIZ TIME OVER</b></h1></center>
 	<center><h1>Result</h1>
-		<h3><strong>You scored <%= @score %> out of 10</strong></h3></center>
+		<h3><b>You scored <%= @score %> out of 10</b></h3></center>
 		<h4><%= link_to "view answers", view_answers_path(:type => "#{@type}"),
 		:class => "pull-right"%></h4>
 		<h4><%= link_to "view records", records_path %></h4>
+    <h4><%= link_to "Get PDF", generate_result_path %></h4>
 </div>

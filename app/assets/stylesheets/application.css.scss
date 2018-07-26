@@ -22,14 +22,13 @@
   border-color: white;
   font-family: times roman;
   font-size: 1.35em;
-
 }
 
 .header{
-	font-size: 3em;
+	font-size: 3.5em;
 	font-weight: bold;
   font-family: times roman;
-  text-shadow: 4px 3px 2px  powderblue;
+  text-shadow: 4px 4px 4px black ;
 }
 
 .link{
@@ -49,4 +48,8 @@
 .field{
 	text-align:center;
 	font-family: times roman;
+}
+
+body{
+  background-image : image-url("bg1.jpg");
 }

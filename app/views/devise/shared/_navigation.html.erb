@@ -7,7 +7,7 @@
     <%end%> 
     <c class = "pull-right">
       <% if  user_signed_in? %> 
-        <%=current_user.username %>
+        <%=current_user.username.upcase %>
       <% else%>
         <%="Guest"%>
       <% end %>   

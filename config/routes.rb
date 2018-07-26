@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   get 'users/index'
   devise_for :users
@@ -11,4 +13,5 @@ Rails.application.routes.draw do
   get 'view_answers' => 'students#view_answers'
   get 'records' => 'students#records'
   get 'error' => 'students#error'
+  get 'generate_result' => 'students#generate_result', format: 'pdf'
 end

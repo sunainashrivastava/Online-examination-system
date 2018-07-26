@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -34,7 +36,19 @@ config.public_file_server.enabled
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  
+  config.action_mailer.perform_deliveries = true # Set it to false to disable the email in dev mode
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = {:host => "localhost:3000"}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address: 'smtp.gmail.com',
+  port: 587,
+  domain: 'mail.gmail.com',
+  user_name: 'rormailingtest@gmail.com',
+  password: 'catdog@123',
+  authentication: 'plain',
+  enable_starttls_auto: true }
 
   config.action_mailer.perform_caching = false
 
@@ -54,7 +68,12 @@ config.public_file_server.enabled
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
+  config.assets.precompile += ['blueprint/screen.css', 'pdf.css', 'jquery.ui.datepicker.js', 'pdf.js']
 
+  Rails.application.config.assets.precompile += %w( jquery.countdown.js )
+
+  
+  # config.assets.precompile += %w( pdf.css )
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
@@ -66,4 +85,6 @@ config.public_file_server.enabled
 end
 
 require 'carrierwave/orm/activerecord'
+
+
 

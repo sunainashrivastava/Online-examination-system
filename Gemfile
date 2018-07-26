@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -66,7 +68,7 @@ gem 'devise', '~> 4.1'
 
 gem 'bootstrap-sass', '~> 3.3.7'
 
-gem 'jquery-rails'
+
 gem "jquery-ui-rails"
 
 gem 'rolify'
@@ -76,3 +78,10 @@ gem 'cancancan', '~> 2.0'
 gem 'carrierwave', '~> 1.0'
 
 gem 'mini_magick', '~> 4.3'
+
+gem 'wicked_pdf'
+
+gem 'wkhtmltopdf-binary-edge', '~> 0.12.2.1'
+
+gem 'jquery-rails'
+
