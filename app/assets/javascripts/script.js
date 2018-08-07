@@ -1,42 +1,118 @@
+// method to get user response.
 $(document).on('click', 'input[name=option]', function () {
-	value = $('[name="option"]:checked').val();
-	user_answer = $("#user_answer").val(value);
+  value = $('[name="option"]:checked').val();
+  user_answer = $("#user_answer").val(value);
+});
+
+// method to set timer for each question.
+var time_spend = new Array();
+var i;
+$(document).ready(function(){
+   i = 0;
+  var val = $('.newTimer').data('time');
+  val = parseInt(val);
+  $(".timer").on('click', function autoRun(){  
+    setTimeout(function(){
+      document.getElementById("timeLeft").innerHTML = val;
+      if(val == 0){
+      $('.change').trigger('click');
+        autoRun();
+      }
+      else
+      {
+        val = val - 1;
+        autoRun();
+      }
+    }, 1000);
+
+    $(".change").on('click', function(){
+      time_spend[i] = parseInt(60-val);
+      time_spend = time_spend.filter(item => item !== 0)
+      val = 60;
+      i = i + 1;
+    });
+  });
+});
+
+function results(){
+  document.getElementById('timeSpend').innerHTML = time_spend;
+}
+
+// flash message
+$(document).ready(function(){
+  setTimeout(function(){
+  $('.flash').fadeOut();
+  }, 10000);
+});
+
+$(document).ready(function(){
+  $("#take_test_type").on('click', function(){
+    document.getElementById('type').innerHTML = "(Enter type in the following format 'Aptitude', 'Reasoning','Verbal')"
+    $('span').fadeOut(20000);
+  });
+
+  $(".well").on('hover',function(){
+    $(this).css("background-color", "#B0C4DE");
+    }, function(){
+    $(this).css("background-color", "powderblue");
+  });
+
+  $(function(){
+    $('.link').hover(function(){
+        $(this).animate({'z-index':'1','font-size':'35px'},50);
+      },
+      function(){
+      $(this).animate({'z-index':'0','font-size':'1.35em'},50);
+    });
+});
 });
 
 
 
-// 10 minutes from now
-// var time_in_minutes = 10;
-// var current_time = Date.parse(new Date());
-// var deadline = new Date(current_time + time_in_minutes*60*1000);
+// // method to get user response.
+// $(document).on('click', 'input[name=option]', function () {
+//   value = $('[name="option"]:checked').val();
+//   user_answer = $("#user_answer").val(value);
+// });
 
-
-// function time_remaining(endtime){
-//   var t = Date.parse(endtime) - Date.parse(new Date());
-//   var seconds = Math.floor( (t/1000) % 60 );
-//   var minutes = Math.floor( (t/1000/60) % 60 );
-//   var hours = Math.floor( (t/(1000*60*60)) % 24 );
-//   var days = Math.floor( t/(1000*60*60*24) );
-//   return {'total':t, 'days':days, 'hours':hours, 'minutes':minutes, 'seconds':seconds};
-// }
-// function run_clock(id,endtime){
-//   var clock = document.getElementById(id);
-//   function update_clock(){
-//     var t = time_remaining(endtime);
-//     clock.innerHTML = 'minutes: '+t.minutes+'<br>seconds: '+t.seconds;
-//     if(t.total<=0){ clearInterval(timeinterval); }
-//   }
-//   update_clock(); // run function once at first to avoid delay
-//   var timeinterval = setInterval(update_clock,1000);
-// }
-// run_clock('clockdiv',deadline);
-
+// // method to set timer for each question.
+// var time_spend = new Array();
+// var i;
 // $(document).ready(function(){
-//   console.log("hey");
-//   $("#s1").click(function(){
-//     console.log("byee");
-//     setTimeout(function(){ alert("Hello"); }, 3000 );
+//    i = 0;
+//   var val = $('.newTimer').data('time');
+//   val = parseInt(val);
+//   $(".timer").on('click', function autoRun(){  
+//     setTimeout(function(){
+//       document.getElementById("timeLeft").innerHTML = val;
+//       if(val == 0){
+//       $('.change').trigger('click');
+//         val = 60;
+//         autoRun();
+//       } 
+//       else
+//       {
+//         val = val - 1;
+//         autoRun();
+//       }
+//     }, 1000);
+//   });
+
+//   function run(){   
+//     time_spend[i] = parseInt(60-val);
+//     console.log(time_spend);
+//     i = i + 1;
+//     document.getElementById('timeSpend').innerHTML = time_spend;
+//   }
+
+//   $( document ).ajaxSuccess(function( event, xhr, settings ) {
+//     $(".change").on('click', function(){
+//       run();
+//       val = 60;
+//     });
 //   });
 // });
 
-
+// function results(){
+//   document.getElementById('timeSpend').innerHTML = time_spend;
+// }

@@ -1,55 +1,79 @@
-<div class ="panel">
-  <%= form_for @take_test, remote: true do |form| %>
-    <p>
-      <%= form.label :type %><br />
-      <%= form.select :type, ['Aptitude', 'Reasoning','Verbal'] %>
-    </p>
-
-    <p>
-      <%= form.label :sno %><br />
-      <%= form.text_field :sno %>
-    </p>
-    <p>
-      <%= form.label :question %><br />
-      <%= form.text_area :question %>
-    </p>
-   
-    <p>
-      <%= form.label :option1 %><br />
-      <%= form.text_field :op1 %>
-    </p>
-    <p>
-      <%= form.label :option2 %><br />
-      <%= form.text_field :op2 %>
-    </p>
-   
-    <p>
-      <%= form.label :option3 %><br />
-      <%= form.text_field :op3 %>
-    </p>
-   
-    <p>
-      <%= form.label :option4 %><br />
-      <%= form.text_field :op4 %>
-    </p>
-
-    <p>
-      <%= form.label :answer %><br>
-      <%= form.text_field :ans %>
-    </p>
-
-    <p>
-      <%= form.fields_for :pictures do |picture| %>
-        <%= picture.label :image %>
-        <%= picture.file_field :avatar %>
+<script>
+$(".well").hover(function(){
+  $(this).css("background-color", "#B0C4DE");
+  }, function(){
+  $(this).css("background-color", "powderblue");
+});
+</script>
+<%= link_to 'back',take_tests_path,:class => "btn btn-info"  %>
+<div class="panel">
+  <fieldset>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <h1><b><u>FILL THE FOLLOWING FIELDS</u></b></h1>
+      <%= form_for @take_test do |form| %>
+        <div class="well">
+          <p>
+            <%= form.label :Question_type %>
+            <span id="type"></span>
+            <br />
+            <!-- <%= form.select :type, ['Aptitude', 'Reasoning','Verbal'] %> -->
+            <%= form.text_field :type, class: "form-control" %>
+          </p>
+        </div>
+        <div class="well">
+          <p>
+            <%= form.label :sno %><br />
+            <%= form.text_field :sno, class: "form-control"  %>
+          </p>
+        </div>
+        <div class="well">
+          <p>
+            <%= form.label :question %><br />
+            <%= form.text_field :question, class: "form-control"  %>
+          </p>
+        </div>
+        <div class="well">
+          <p>
+            <%= form.label :option1 %><br />
+            <%= form.text_field :op1, class: "form-control"  %>
+          </p>
+        </div>
+        <div class="well">
+          <p>
+            <%= form.label :option2 %><br />
+            <%= form.text_field :op2, class: "form-control"  %>
+          </p>
+        </div>
+        <div class="well">
+          <p>
+            <%= form.label :option3 %><br />
+            <%= form.text_field :op3, class: "form-control"  %>
+          </p>
+        </div>
+        <div class="well">
+          <p>
+            <%= form.label :option4 %><br />
+            <%= form.text_field :op4, class: "form-control"  %>
+          </p>
+        </div>
+        <div class="well">
+          <p>
+            <%= form.label :answer %><br>
+            <%= form.text_field :ans, class: "form-control" %>
+          </p>
+        </div>
+        <p>
+          <%= form.fields_for :pictures do |picture| %>
+            <%= picture.label :image %>
+            <%= picture.file_field :avatar %>
+          <% end %>
+        </p>
+        <p>
+          <%= form.submit  :class => "btn btn-info pull-right"%>
+        </p>
       <% end %>
-    </p>
-
-    <p>
-      <%= form.submit  :class => "btn btn-info"%>
-    </p>
-
-  <% end %>
-
-  <%= link_to 'back',questions_path%>
+    </div>
+    <div class="col-sm-2"></div>
+  </fieldset>
 </div>

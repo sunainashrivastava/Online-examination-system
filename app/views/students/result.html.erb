@@ -1,9 +1,14 @@
 <div class = "panel">
-  <center><h1><b>QUIZ TIME OVER</b></h1></center>
+  <%= hidden_field_tag(:timeLeft)%>
+  <center><h1><b><u>QUIZ TIME OVER</u></b></h1></center>
 	<center><h1>Result</h1>
-		<h3><b>You scored <%= @score %> out of 10</b></h3></center>
-		<h4><%= link_to "view answers", view_answers_path(:type => "#{@type}"),
+		<h3><b>You scored <%= @score = TakeTestUser.where(result: true).count %> out of 10</h3>
+    <h3>You took <%= @time_taken.strftime("%M:%S") %> to finish the quiz.</h3>
+    <button onclick="results()" id="timeSpend" class="btn btn-info">timing details for each question
+    </button>
+  </center>
+		<h4><%= link_to "Answers of the questions", view_answers_path(:type => "#{@type}"),
 		:class => "pull-right"%></h4>
 		<h4><%= link_to "view records", records_path %></h4>
-    <h4><%= link_to "Get PDF", generate_result_path %></h4>
+    <h4><%= link_to "Get PDF", generate_result_path(:score => @score) %></h4>
 </div>

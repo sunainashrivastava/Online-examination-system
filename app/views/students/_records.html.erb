@@ -1,0 +1,26 @@
+<script type="text/javascript">
+  $(document).on('click', ".pagination a",function(){
+    $.get(this.href, null, null, "script");
+    return false;
+  });
+</script>
+
+<table align="center" class ="record_table table">
+  <thead>
+    <tr>
+      <th><center>Scores</center></th>
+      <th><center>Date of test</center></th>
+      <th><center>Time of test</center></th>
+    </tr>
+  </thead>
+  <tbody>
+  <%= will_paginate @records, remote: true %>
+    <% @records.each do |records|%>
+      <tr>
+        <td><%= "#{records.scores}/10" %></td>
+        <td><%= records.attempt_time.strftime("%D %M %Y")%></td>
+        <td><%= records.attempt_time.strftime("%H:%M:%S")%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

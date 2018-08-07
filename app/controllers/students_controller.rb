@@ -4,7 +4,9 @@
 class StudentsController < ApplicationController
   before_action :authenticate_user!
 
-  def index; end
+  def index
+    TakeTestUser.delete_all
+  end
 
   def displays
     @questions = TakeTest.find_by(type: params[:value])
@@ -13,29 +15,25 @@ class StudentsController < ApplicationController
   def change_question
     question = TakeTest.find(params[:id])
     sno = question.sno + 1
-    @questions = TakeTest.where(sno: sno, type: question.type).first
-    user_response = params[:user_answer]
-    result = (question.ans == user_response)
-    TakeTestUser.create(question_id: params[:id], result: result, user_id: current_user.id, take_test_id: current_user.id)
-    @time = TakeTestUser.first.created_at
+    @questions = TakeTest.find_by(sno: sno, type: question.type)
+    result = (question.ans == params[:user_answer])
+    current_user.take_test_users.create(question_id: params[:id],
+                                        result: result,
+                                        take_test_id: current_user.id)
     redirect_to action: 'result' if sno == 11
   end
 
   def result
     user_record = TakeTestUser.first
     if user_record
-      question = TakeTest.find_by(id: user_record.question_id)
-      @type = question.type
-      @score = TakeTestUser.where(result: true).count
-      Record.create(user_id: current_user.id, take_test_id: current_user.id, scores: @score, attempt_time: Time.now + 5.hours + 30.minutes)
-      TakeTestUser.delete_all
-      UserMailer.score_email(current_user, @score).deliver
-      respond_to do |format|
-        format.html
-        format.pdf do
-          render pdf: 'generate_result' # Excluding ".pdf" extension.
-        end
-      end
+      time_taken = TakeTestUser.last.created_at - TakeTestUser.first.created_at
+      @time_taken = Time.at(time_taken) - 30.minutes + 1.seconds
+      @type = TakeTest.find_by(id: user_record.question_id).type
+      Record.create(user_id: current_user.id,
+                    take_test_id: current_user.id,
+                    scores: TakeTestUser.where(result: true).count,
+                    attempt_time: Time.now + 5.hours + 30.minutes)
+      # UserMailer.score_email(current_user, @score).deliver
     else
       render 'error'
     end
@@ -43,11 +41,22 @@ class StudentsController < ApplicationController
 
   def records
     @records = Record.where(user_id: current_user.id)
+    @records = @records.paginate(page: params[:page], per_page: 10)
   end
 
   def view_answers
-    @solutions = TakeTest.where(type: params[:type])
+    @solutions = TakeTest.where(type: params[:type]).limit(10)
   end
 
   def error; end
+
+  def generate_result
+    @score = params[:score]
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: 'generate_result' # Excluding ".pdf" extension.
+      end
+    end
+  end
 end

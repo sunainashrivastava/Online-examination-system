@@ -1,5 +1,5 @@
 <div class="panel">
-  <table>
+  <table class="table">
     <thead>
       <tr>
         <th>S/No</th>
@@ -22,12 +22,13 @@
           <td><%= test.op4 %></td>
           <td><%= test.ans %></td>
           <td><%= link_to 'Destroy', take_test_path(test),
-                method: :delete, :class => "text-danger", 
+                method: :delete, :class => "btn btn-danger", 
                 data: { confirm: 'Are you sure?' }%></td>
         </tr>
       <% end %>
     </tbody>
   </table>
-  <td><%= link_to 'Create', new_take_test_path, :class => "text-danger"%></td>
-  <td><%= link_to 'back',root_path, :class => "text-danger"%></td>
+  <%= will_paginate @questions%><br>
+  <td><%= link_to 'Create', new_take_test_path, :class => "btn btn-info pull-right"%>
+  <%= link_to 'back',take_tests_path, :class => "btn btn-info"%></td>
 </div>

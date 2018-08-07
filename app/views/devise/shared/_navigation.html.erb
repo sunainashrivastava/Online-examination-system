@@ -24,7 +24,7 @@
       </ul>
       <ul class="nav navbar-nav pull-right">
         <% if user_signed_in? %>
-          <li><%= link_to 'Take test', students_path%></li>
+          <li onClick="window.location.reload()"><%= link_to 'Take test', students_path%></li>
           <% if can? :create, @take_test %>
             <li><%= link_to 'Create test', take_tests_path%></li>
           <% end %>

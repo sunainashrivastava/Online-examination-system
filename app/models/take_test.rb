@@ -8,7 +8,7 @@ class TakeTest < ApplicationRecord
   scope :aptitudes, -> { where(type: 'Aptitude') }
   scope :reasonings, -> { where(type: 'Reasoning') }
   scope :verbals, -> { where(type: 'Verbal') }
-  validates :sno, :question, :op1, :op2, :op3, :op4, :ans, presence: true
+  validates :type, :sno, :question, :op1, :op2, :op3, :op4, :ans, presence: true
   has_many :pictures, as: :imageable
   accepts_nested_attributes_for :pictures
 end

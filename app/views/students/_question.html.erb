@@ -1,38 +1,37 @@
-<div class="container-fluid">
-	<div class = "panel">
-		<h1><center><b>QUIZ FOR <%= @questions.type.upcase%></b></center></h1>
-		<%= form_tag({controller: "students", action: "change_question"}, remote: true) do%>
-    <div class="questions">
+<div class = "panel">
+	<h1><center><b><u>QUIZ FOR <%= @questions.type.upcase%></u></b></center></h1>
+	<h4 class="pull-right"><b>Time left - <span id="timeLeft"></span></b></h4>
+	<%= form_tag({controller: "students", action: "change_question"}, remote: true) do%>
+	  <div class="questions">
 			<p>
-			  <strong>S/No:</strong>
-			  <%= @questions.sno %>
+				<strong>S/No:</strong>
+				<%= @questions.sno %>
 			</p>
-			 <p>
-			  <strong>Question:</strong>
-			  <%= @questions.question %>
+			<p>
+				<strong>Question:</strong>
+				<%= @questions.question %>
 			</p>
-			<div class = "user_response">
-				<p>
-				  <%= radio_button_tag(:option, @questions[:op1]) %>
-			    <%= label_tag("#{@questions[:op1]}") %>
-				</p>
-				<p>
-				  <%= radio_button_tag(:option, @questions[:op2]) %>
-			    <%= label_tag("#{@questions[:op2]}") %>
-				</p>
-				<p>
-				  <%= radio_button_tag(:option, @questions[:op3]) %>
-			    <%= label_tag("#{@questions[:op3]}") %>
-				</p>
-				<p>
-				  <%= radio_button_tag(:option, @questions[:op4]) %>
-			    <%= label_tag("#{@questions[:op4]}") %>
-				</p>
-				<%= hidden_field_tag(:user_answer, "nil") %>
-				<%= hidden_field_tag(:id, "#{@questions[:id]}") %>
-				<%= submit_tag 'Save n Change', :class => "btn btn-info" %>
-				<% end%>
-			</div>
-		</div>
-	</div>
+			<div class="options">
+			<p>
+				<%= radio_button_tag(:option, @questions[:op1]) %>
+				<%= label_tag("#{@questions[:op1]}") %>
+			</p>
+			<p>
+				<%= radio_button_tag(:option, @questions[:op2]) %>
+				<%= label_tag("#{@questions[:op2]}") %>
+			</p>
+			<p>
+				<%= radio_button_tag(:option, @questions[:op3]) %>
+				<%= label_tag("#{@questions[:op3]}") %>
+			</p>
+			<p>
+				<%= radio_button_tag(:option, @questions[:op4]) %>
+				<%= label_tag("#{@questions[:op4]}") %>
+			</p>
+		  </div>
+			<%= hidden_field_tag(:user_answer, "nil") %>
+			<%= hidden_field_tag(:id, "#{@questions[:id]}") %>
+			<%= submit_tag 'Save n Change', :class => "btn btn-info change"%>
+    </div>
+	<% end%>
 </div>

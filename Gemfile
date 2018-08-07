@@ -79,9 +79,18 @@ gem 'carrierwave', '~> 1.0'
 
 gem 'mini_magick', '~> 4.3'
 
-gem 'wicked_pdf'
-
-gem 'wkhtmltopdf-binary-edge', '~> 0.12.2.1'
-
 gem 'jquery-rails'
 
+group :development, :test do
+  gem 'rspec-rails', '~> 3.7'
+end
+
+group :development, :test do
+  gem 'factory_bot_rails'
+end
+
+gem 'will_paginate', '~> 3.1.0'
+
+gem 'wicked_pdf'
+
+gem 'wkhtmltopdf-binary'

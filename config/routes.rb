@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   get 'records' => 'students#records'
   get 'error' => 'students#error'
   get 'generate_result' => 'students#generate_result', format: 'pdf'
+  get 'error404' => 'take_tests#error404'
 end
+ 
