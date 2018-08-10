@@ -29,14 +29,9 @@ class TakeTestsController < ApplicationController
   end
 
   def show
-    begin
-    take_test = TakeTest.find(params[:id])
-      debugger
-      @take_test = take_test
-    rescue RecordNotFound => e
-      debugger
-      render 'take_tests/error404'
-    end
+    @take_test = TakeTest.find(params[:id])
+    rescue RecordNotFound
+    render 'take_tests/error404'
   end
 
   def index; end
