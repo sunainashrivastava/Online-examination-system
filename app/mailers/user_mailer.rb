@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
+# class UserMailer
 class UserMailer < ApplicationMailer
-  default :from => "online_examination_system@oes.com"
+  default from: 'online_examination_system@oes.com'
 
   def score_email(user, score)
     @user = user
     @score = score
-    mail(:to => "#{user.username} <#{user.email}>", :subject => "Score Card")
+    mail(to: "#{user.username} <#{user.email}>", subject: 'Score Card')
   end
 end

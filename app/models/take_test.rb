@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#taketest class
+# taketest class
 class TakeTest < ApplicationRecord
   has_many :records
   has_many :take_test_users

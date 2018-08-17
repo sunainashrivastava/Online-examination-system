@@ -12,22 +12,22 @@
 				<%= @questions.question %>
 			</p>
 			<div class="options">
-			<p>
-				<%= radio_button_tag(:option, @questions[:op1]) %>
-				<%= label_tag("#{@questions[:op1]}") %>
-			</p>
-			<p>
-				<%= radio_button_tag(:option, @questions[:op2]) %>
-				<%= label_tag("#{@questions[:op2]}") %>
-			</p>
-			<p>
-				<%= radio_button_tag(:option, @questions[:op3]) %>
-				<%= label_tag("#{@questions[:op3]}") %>
-			</p>
-			<p>
-				<%= radio_button_tag(:option, @questions[:op4]) %>
-				<%= label_tag("#{@questions[:op4]}") %>
-			</p>
+				<p>
+					<%= radio_button_tag(:option, @questions[:op1]) %>
+					<%= label_tag("#{@questions[:op1]}") %>
+				</p>
+				<p>
+					<%= radio_button_tag(:option, @questions[:op2]) %>
+					<%= label_tag("#{@questions[:op2]}") %>
+				</p>
+				<p>
+					<%= radio_button_tag(:option, @questions[:op3]) %>
+					<%= label_tag("#{@questions[:op3]}") %>
+				</p>
+				<p>
+					<%= radio_button_tag(:option, @questions[:op4]) %>
+					<%= label_tag("#{@questions[:op4]}") %>
+				</p>
 		  </div>
 			<%= hidden_field_tag(:user_answer, "nil") %>
 			<%= hidden_field_tag(:id, "#{@questions[:id]}") %>

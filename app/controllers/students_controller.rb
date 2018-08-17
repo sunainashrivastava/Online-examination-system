@@ -34,6 +34,7 @@ class StudentsController < ApplicationController
                     scores: TakeTestUser.where(result: true).count,
                     attempt_time: Time.now + 5.hours + 30.minutes)
       # UserMailer.score_email(current_user, @score).deliver
+      debugger
     else
       render 'error'
     end
