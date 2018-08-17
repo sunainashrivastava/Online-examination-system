@@ -33,7 +33,7 @@ class StudentsController < ApplicationController
                     take_test_id: current_user.id,
                     scores: TakeTestUser.where(result: true).count,
                     attempt_time: Time.now + 5.hours + 30.minutes)
-      # UserMailer.score_email(current_user, @score).deliver
+      UserMailer.score_email(current_user, @score).deliver
       debugger
     else
       render 'error'

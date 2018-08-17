@@ -30,7 +30,8 @@ class TakeTestsController < ApplicationController
 
   def show
     @take_test = TakeTest.find(params[:id])
-  rescue RecordNotFound
+    rescue RecordNotFound
+    rescue RecordNotFound
     render 'take_tests/error404'
   end
 
