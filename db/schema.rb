@@ -12,10 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2018_07_25_134737) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "pictures", force: :cascade do |t|
     t.string "avatar"
     t.string "imageable_type"
-    t.integer "imageable_id"
+    t.bigint "imageable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["avatar"], name: "index_pictures_on_avatar"
@@ -23,8 +26,8 @@ ActiveRecord::Schema.define(version: 2018_07_25_134737) do
   end
 
   create_table "records", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "take_test_id"
+    t.bigint "user_id"
+    t.bigint "take_test_id"
     t.integer "scores"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -36,7 +39,7 @@ ActiveRecord::Schema.define(version: 2018_07_25_134737) do
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
-    t.integer "resource_id"
+    t.bigint "resource_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
@@ -45,8 +48,8 @@ ActiveRecord::Schema.define(version: 2018_07_25_134737) do
   end
 
   create_table "take_test_users", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "take_test_id"
+    t.bigint "user_id"
+    t.bigint "take_test_id"
     t.boolean "result"
     t.integer "question_id"
     t.datetime "created_at", null: false
@@ -90,11 +93,15 @@ ActiveRecord::Schema.define(version: 2018_07_25_134737) do
   end
 
   create_table "users_roles", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "role_id"
+    t.bigint "user_id"
+    t.bigint "role_id"
     t.index ["role_id"], name: "index_users_roles_on_role_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "records", "take_tests"
+  add_foreign_key "records", "users"
+  add_foreign_key "take_test_users", "take_tests"
+  add_foreign_key "take_test_users", "users"
 end
