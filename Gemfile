@@ -88,5 +88,3 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
 gem 'pg'
-
-gem 'sendgrid-ruby'
