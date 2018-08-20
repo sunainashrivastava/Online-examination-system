@@ -80,8 +80,8 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 # SMTP settings for mailgun
 ActionMailer::Base.smtp_settings = {
-  :user_name =>'rormailingtest@gmail.com',
-  :password => 'tdog@123',
+  :user_name => ENV['SENDGRID_USERNAME'],
+  :password => ENV['SENDGRID_PASSWORD'],
   :domain => '<myherokuappname>.herokuapp.com',
   :address => 'smtp.sendgrid.net',
   :port => 587,
