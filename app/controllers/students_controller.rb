@@ -29,6 +29,7 @@ class StudentsController < ApplicationController
       time_taken = TakeTestUser.last.created_at - TakeTestUser.first.created_at
       @time_taken = Time.at(time_taken) - 30.minutes + 1.seconds
       @type = TakeTest.find_by(id: user_record.question_id).type
+      @score = TakeTestUser.where(result: true).count
       Record.create(user_id: current_user.id,
                     take_test_id: current_user.id,
                     scores: TakeTestUser.where(result: true).count,
