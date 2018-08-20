@@ -45,8 +45,8 @@ config.public_file_server.enabled
   address: 'smtp.gmail.com',
   port: 587,
   domain: 'mail.gmail.com',
-  user_name: 'rormailingtest@gmail.com',
-  password: 'catdog@123',
+  user_name: 'shirivastavasunaina@gmail.com',
+  password: 's12345678s',
   authentication: 'plain',
   enable_starttls_auto: true }
 
