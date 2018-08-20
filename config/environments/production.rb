@@ -80,13 +80,13 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 # SMTP settings for mailgun
 ActionMailer::Base.smtp_settings = {
-  address: 'smtp.gmail.com',
-  port: 587,
-  domain: 'mail.gmail.com',
-  user_name: 'rormailingtest@gmail.com',
-  password: 'catdog@123',
-  authentication: 'plain',
-  enable_starttls_auto: true
+  :user_name =>'rormailingtest@gmail.com',
+  :password => 'tdog@123',
+  :domain => '<myherokuappname>.herokuapp.com',
+  :address => 'smtp.sendgrid.net',
+  :port => 587,
+  :authentication => :plain,
+  :enable_starttls_auto => true
 }
 
   # Ignore bad email addresses and do not raise email delivery errors.

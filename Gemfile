@@ -89,3 +89,4 @@ gem 'wkhtmltopdf-binary'
 
 gem 'pg'
 
+gem 'sendgrid-ruby'
